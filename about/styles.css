@@ -1,0 +1,768 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.grain:after {
+    content: "";
+    position: fixed;
+    top: -110%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    opacity: 0.5;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    animation: grain 10s steps(10) infinite;
+    z-index: 0;
+}
+
+@keyframes grain {
+    0%, 100%   { transform: translate(0, 0) }
+    10%        { transform: translate(-5%, -10%) }
+    20%        { transform: translate(-15%, 5%) }
+    30%        { transform: translate(5%, -25%) }
+    40%        { transform: translate(-5%, 25%) }
+    50%        { transform: translate(-15%, 10%) }
+    60%        { transform: translate(15%, 0) }
+    70%        { transform: translate(0, 15%) }
+    80%        { transform: translate(5%, 35%) }
+    90%        { transform: translate(-10%, 10%) }
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    background-color: black;
+    margin-bottom: 350px;
+    /* height: 100vh; */
+}
+
+.nav-bar {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: rgb(15, 15, 15);
+    padding: 0.5rem 0.6rem;
+    border-radius: 9999px;
+    z-index: 9999;
+}
+
+.nav-pfp-link {
+    display: block;
+    line-height: 0;
+}
+
+.nav-pfp {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nav-bar a:not(.rolling-text) {
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+}
+
+#contact {
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.2rem 0.4rem;
+    cursor: pointer;
+}
+
+#contact a {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+
+.nav-bar a.rolling-text {
+  color: #fff;
+  font-size: 1rem;
+  padding: 0 0.8rem;
+}
+
+.rolling-text {
+    display: inline-block;
+    overflow: hidden;
+    padding: 0 0.8rem;
+    height: 1em;        
+    line-height: 1em;
+    vertical-align: middle;
+    box-sizing: content-box;
+}
+
+.rolling-text .block {
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.rolling-text .block:last-child {
+    color: rgb(208, 255, 113);
+}
+
+.rolling-text:hover .block {
+    transform: translateY(-100%);
+}
+
+#contact::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgb(208,255,113);
+    border-radius: inherit;
+    transition: width 0.4s ease-in-out;
+    z-index: 0;
+}
+
+#contact:hover::before {
+    width: 100%;
+}
+
+.hero-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* MODIFIED: Removed top/bottom padding to allow true vertical centering */
+    padding: 0 6rem; 
+    color: #fff;
+}
+
+.hero-content-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    /* MODIFIED: Reduced the gap for a tighter layout */
+    gap: 4rem; 
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    padding-top: 5rem;
+}
+
+.hero-text-content {
+    display: flex;
+    flex-direction: column;
+    /* MODIFIED: Aligns the content to the right edge of its column */
+    align-items: flex-start; 
+    gap: 2rem;
+    /* MODIFIED: Aligns the text itself to the right */
+    text-align: left;
+}
+
+.section-heading {
+    font-family: 'Inter', sans-serif;
+    /* MODIFIED: Reduced the font size to be less overwhelming */
+    font-size: clamp(3rem, 5vw, 5rem); 
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.social-container {
+    display: flex;
+    gap: 1.5rem;
+    /* MODIFIED: Removed bottom margin to tighten the text block */
+    margin-bottom: 0; 
+}
+
+.social-container ion-icon {
+    font-size: 1.8rem;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.social-container a:hover ion-icon {
+    color: rgb(208, 255, 113);
+}
+
+.pfp-card {
+    background: rgba(17, 17, 17, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.2rem; /* Increased padding for more breathing room */
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    /* visibility: hidden;  */
+}
+
+.pfp-card:hover {
+    box-shadow: 0 0 30px rgba(208, 255, 113, 0.3);
+    transform: translateY(-8px) scale(1.03);
+}
+
+.hero-pfp {
+    width: clamp(280px, 22vw, 350px);
+    height: clamp(350px, 25vw, 420px);
+    border-radius: 1rem;
+    object-fit: cover;
+    display: block;
+}
+
+.about-section {
+    padding: 12rem 6rem;
+    color: #fff;
+}
+
+.about-content-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.about-left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    text-align: left;
+}
+
+.section-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(3rem, 5vw, 6rem);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.my-summary {
+    font-size: 1.5rem;
+    color: inherit;
+    line-height: 1.6;
+    margin: 1rem 0 1rem;
+    max-width: 55ch;
+}
+
+.exp-section {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    color: #fff;
+    /* min-height: 300vh;  */
+    transform: translateZ(0);
+}
+
+.exp-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.exp-header {
+    text-align: left;
+    margin-bottom: 4rem;
+    max-width: 55ch;
+}
+
+.internship-timeline {
+    position: relative; /* Make sure this is uncommented */
+    margin: 4rem auto;
+    padding: 2rem 0;
+    max-width: 900px;
+}
+
+/* ADD THIS: Creates the central vertical line */
+.internship-timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: rgba(255, 255, 255, 0.15);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    z-index: 0;
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 2rem 2.5rem;
+    box-sizing: border-box;
+}
+
+/* ADD THIS: Creates the circular markers on the timeline */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(208, 255, 113);
+    border: 4px solid #111;
+    top: 2rem;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.timeline-item.left {
+    left: 0;
+    padding-right: 3rem;
+}
+
+.timeline-item.left::after {
+    right: -10px;
+}
+
+.timeline-item.right {
+    left: 50%;
+    padding-left: 3rem;
+}
+
+.timeline-item.right::after {
+    left: -10px;
+}
+
+.internship-card {
+    background: rgba(17, 17, 17, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2rem; /* Increased padding for more breathing room */
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    /* visibility: hidden;  */
+}
+
+.internship-card:hover {
+    box-shadow: 0 0 30px rgba(208, 255, 113, 0.3);
+    transform: translateY(-8px) scale(1.03);
+}
+
+/* Defines the style for the main role title */
+.internship-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.25rem; /* Space below the title */
+    font-size: 1.5rem; /* Larger font for the title */
+    font-weight: 700; /* Bolder text */
+    color: #fff;
+}
+
+/* This is the container for the company name and logo */
+.company-name {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem; /* Adjusted margin */
+}
+
+/* NEW: Styles the company logo using its new class */
+.company-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    max-width: 100px; height: auto;
+}
+
+.exp-dates {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #888;
+    margin-bottom: 1.5rem;
+}
+
+/* Styles the company name text */
+.internship-card h4 {
+    font-size: 1rem;
+    color: #aaa; /* Softer color for secondary text */
+    font-weight: 400; /* Regular weight */
+    margin: 0; /* Removes default margin */
+}
+
+.exp-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transition: opacity 0.3s ease 0.2s;
+}
+
+/* Styles the bullet points */
+.exp-body li {
+    display: flex;
+    align-items: flex-start; /* Aligns icon with the top of the text */
+    gap: 0.75rem;
+    font-size: 1rem; /* Slightly smaller for balance */
+    line-height: 1.5; /* Improved line spacing */
+    color: #ccc;
+    margin-bottom: 0.75rem;
+}
+
+/* Ensures the last bullet point has no bottom margin */
+.exp-body li:last-child {
+    margin-bottom: 0;
+}
+
+/* Styles the checkmark icon */
+.exp-body li ion-icon {
+    font-size: 1.2rem;
+    color: rgb(208, 255, 113); /* Highlight color */
+    margin-top: 2px; /* Fine-tunes vertical alignment */
+}
+
+.timeline-item.left .internship-card {
+    text-align: right;
+}
+
+/* Aligns the flex items (company name + logo) to the right edge */
+.timeline-item.left .company-name {
+    justify-content: flex-end;
+}
+
+/* Resets the bullet points on the left to be left-aligned for readability */
+.timeline-item.left .exp-body {
+    text-align: left;
+}
+
+.contact-section {
+    padding: 8rem 4rem 12rem 4rem;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-content-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.contact-left-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+.contact-pfp {
+    width: clamp(280px, 25vw, 350px);
+    height: clamp(350px, 31vw, 420px);
+    max-width: 400px;
+    border-radius: 1.5rem;
+    object-fit: cover;
+}
+
+.contact-left-content .animated-hand-container {
+    left: 1px;
+    bottom: -30px;
+}
+
+.contact-summary {
+    font-size: 1.1rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin: 1rem 0 3rem;
+    max-width: 55ch;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #aaa;
+    margin-bottom: 0.75rem;
+    color: rgb(208, 255, 113);;
+}
+
+.form-group input,
+.form-group textarea {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #333 !important;
+    border: 1px solid #333;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 10;
+    opacity: 1;
+}
+
+.form-group input::-webkit-input-placeholder,
+.form-group textarea::-webkit-input-placeholder {
+    color: #666;
+    opacity: 1;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #666;
+    opacity: 1;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: rgb(208, 255, 113);
+    box-shadow: 0 0 0 3px rgba(208, 255, 113, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    margin-bottom: 2rem;
+}
+
+.submit-container {
+    display: flex;
+}
+
+.about-pg {
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    border: 1px solid rgb(208,255,113);
+    border-radius: 999px;
+    padding: clamp(0.7rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2.5rem);
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.about-pg a {
+    position: relative;
+    z-index: 1;
+    color: rgb(208,255,113);
+    font-weight: bold;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    transition: color 0.4s ease;
+}
+
+.about-pg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgb(208,255,113);
+    border-radius: inherit;
+    transition: width 0.4s ease-in-out;
+    z-index: 0;
+}
+
+.about-pg:hover::before {
+    width: 100%;
+}
+
+.about-pg:hover a {
+    color: #000;
+}
+
+.animated-hand-container {
+    position: absolute;
+    bottom: -30px;
+    left: 40px;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(208, 255, 113);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.waving-hand-icon {
+    font-size: 50px;
+    color: #000;
+    transform-origin: bottom center;
+    animation: wave 2.5s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0% { transform: rotate(0deg); }
+    15% { transform: rotate(18deg); }
+    30% { transform: rotate(-10deg); }
+    45% { transform: rotate(18deg); }
+    60% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 350px;
+    background-color: #ffffff;
+    color: #000;
+    z-index: 1;
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1400px;   
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-line {
+    border: 0;
+    height: 1px;
+    background-color: #000;
+    width: 100%;
+    margin: 2rem 0 0 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 0;
+    flex-grow: 1;
+    align-content: start;
+    margin-top: 2rem;
+}
+
+.footer-heading {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.footer-sitemap a.rolling-text, 
+.footer-socials a.rolling-text {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: #000;
+}
+
+.footer-socials {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.socials-icon-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: flex-end;
+    align-self: flex-end;
+}
+
+.socials-icon-container ion-icon {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1.8rem;
+    color: #000;
+    transition: color 0.3s ease;
+}
+
+.socials-icon-container a:hover ion-icon {
+    color: #888;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 2rem 0 1rem 0;
+    margin-bottom: 4rem;
+    margin-left: -2rem;
+}
+
+.footer-bottom p {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 0;
+}
+
+.fixed-footer .rolling-text {
+    color: #000;
+    padding: 0;
+    height: 1.2em;
+    line-height: 1.2em;
+}
+
+.fixed-footer .rolling-text .block:last-child {
+    color: #888;
+}
+
+/* About hero: initial hidden state (prevents flash) */
+.hero-section .hero-text-content .section-heading,
+.hero-section .hero-text-content .social-container,
+.hero-section .hero-text-content .about-pg,
+.hero-section .hero-image .pfp-card {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+/* Gentle pop for the photo card */
+.hero-section .hero-image .pfp-card {
+    transform: translateY(8px) scale(.97);
+}

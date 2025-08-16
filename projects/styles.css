@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 1000vh;
+    font-family: 'Inter', sans-serif;
+    background-color: #000;
+    color: rgb(208,255,113);
+}
+
+p {
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0.9;
+}
+
+p#logo {
+    opacity: 1;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    padding: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    padding: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.slider-wrapper {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    background: radial-gradient(
+        circle,
+        rgba(0, 0, 0, 0) 75%,
+        rgba(0, 0, 0, 0.5) 100%
+    );
+    z-index: 1;
+}
+
+/* === NAV avatar (match Home) === */
+.site-info {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.site-info p {
+    font-size:1.05rem;
+    font-weight:600;
+    line-height:1;      /* ← was 1.5 from the global <p> rule */
+    margin:0;
+}
+
+.nav-pfp-link {
+    display: block;
+    line-height: 0;
+}
+
+.nav-pfp {
+    width: 32px;
+    height: 32px; 
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Make sure anchors inherit color and no underline */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* === Rolling text hover (same as Home) === */
+.nav-links a.rolling-text{
+    display: inline-block;    /* <-- was inline-flex */
+    vertical-align: middle;
+    height: 1em;
+    line-height: 1em;
+    padding: 0 .8rem;
+    color: rgb(208,255,113);
+    cursor: pointer;
+}
+
+.rolling-text {
+    display: inline-block;
+    overflow: hidden;
+    height: 1em;
+    line-height: 1em;
+    vertical-align: middle;
+    box-sizing: content-box;
+}
+
+.rolling-text .block {
+    display: block;
+    transition: transform .6s cubic-bezier(0.76,0,0.24,1);
+}
+
+.rolling-text .block:last-child {
+    color: #fff;
+}
+
+.rolling-text:hover .block {
+    transform: translateY(-100%);
+}
+
+/* === Animated grain (same as Home) === */
+.grain{
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.grain:after{
+    content: "";
+    position: fixed;
+    top: -110%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    opacity: 0.5;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    animation: grain 10s steps(10) infinite;
+}
+
+@keyframes grain{
+    0%,100%{ transform:translate(0,0) }
+    10%{ transform:translate(-5%,-10%) }
+    20%{ transform:translate(-15%,5%) }
+    30%{ transform:translate(5%,-25%) }
+    40%{ transform:translate(-5%,25%) }
+    50%{ transform:translate(-15%,10%) }
+    60%{ transform:translate(15%,0) }
+    70%{ transform:translate(0,15%) }
+    80%{ transform:translate(5%,35%) }
+    90%{ transform:translate(-10%,10%) }
+}
+
+/* === Layering so grain + overlay show above canvas === */
+nav, footer {
+    z-index: 4;
+}
+
+.slider-wrapper, canvas {
+    z-index: 0;
+}
+
+.grain {
+    z-index: 2;
+}
+
+.overlay {
+    z-index: 3;
+    pointer-events:none;
+}

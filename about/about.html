@@ -1,0 +1,211 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krish Shetty</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/grained/grained.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>    
+    <script src="https://unpkg.com/split-type"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="grain"></div>
+
+        <nav class="nav-bar">
+            <a href="../landing/index.html" class="nav-pfp-link"><img src="../assets/imgs/pfp.jpg" alt="Krish Shetty" class="nav-pfp"></a>
+            <a href="../landing/index.html" class="rolling-text">Home</a>
+            <a href="about.html" class="rolling-text">About</a>
+            <a href="../projects/projects.html" class="rolling-text">Projects</a>
+            <button id="contact"><a href="#">Contact</a></button>
+        </nav>
+
+        <section class="hero-section">
+            <div class="hero-content-grid">
+                <div class="hero-text-content">
+                    <h1 class="section-heading">I am<br>Krish Shetty</h1>
+                    <div class="social-container">
+                        <a href="#"><ion-icon name="logo-github"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                    </div>
+                    <button class="about-pg">
+                        <a href="#">Resume</a>
+                    </button>
+                </div>
+                <div class="hero-image">
+                    <div class="pfp-card">
+                        <img src="../assets/imgs/pfp-3.jpg" alt="Krish Shetty" class="hero-pfp">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="about-content-grid">
+                <div class="about-left-content">
+                    <h3 class="section-subtitle">Hello there!!!</h3>
+                    <p class="my-summary">
+                        As you must have already seen, I'm Krish. An AI Engineer who <span>architects intelligent systems</span>, transforming complex business challenges into a decisive competitive advantage.
+                        <br>
+                        As you must have already seen, <span>I'm Krish</span>. An AI Engineer who architects intelligent systems, transforming complex business challenges into a decisive competitive advantage.
+                        <br>
+                        As you must have already seen, I'm Krish. An AI Engineer who architects intelligent systems, <span>transforming complex business challenges</span> into a decisive competitive advantage.
+                        <br>
+                        As you must have already seen, I'm Krish. An <span>AI Engineer</span> who architects intelligent systems, transforming complex business challenges into a decisive competitive advantage.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="exp-section">
+            <div class="exp-container">
+                <div class="exp-header">
+                    <h3 class="section-subtitle">Work History</h3>
+                    <p class="my-summary">
+                        Being a fresher, I haven't gotten a chance to work full-time, but I have worked for a bunch of internships to keep my knack of "contributing" satisfied. Following are a few of my internships in brief:
+                    </p>
+                </div>
+                <div class="internship-timeline">
+                    <!-- Coforge -->
+                    <div class="timeline-item left">
+                        <div class="internship-card">
+                            <div class="role-title">
+                                <h3>AI Developer Intern</h3>
+                            </div>
+                            <div class="company-name">
+                                <h4>Coforge</h4>
+                                <a href="#"><img src="../assets/imgs/coforge.png" alt="Coforge" class="company-logo"></a>
+                            </div>
+                            <p class="exp-dates">May 2024 - August 2024</p>
+                            <div class="exp-body">
+                                <ul>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>High-performance API development with Python & FastAPI.</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Scalable, cloud-ready deployment using Docker.</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Robust backend engineering for workflow automation.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Wajooba -->
+                    <div class="timeline-item right">
+                        <div class="internship-card">
+                            <div class="role-title">
+                                <h3>Developer Intern</h3>
+                            </div>
+                            <div class="company-name">
+                                <h4>Wajooba</h4>
+                                <a href="#"><img src="../assets/imgs/wajooba.png" alt="Wajooba" class="company-logo"></a>
+                            </div>
+                            <p class="exp-dates">Jan 2023 - July 2023</p>
+                            <div class="exp-body">
+                                <ul>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>High-performance API development with Python & FastAPI.</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Scalable, cloud-ready deployment using Docker.</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Robust backend engineering for workflow automation.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Alembic -->
+                    <div class="timeline-item left">
+                        <div class="internship-card">
+                            <div class="role-title">
+                                <h3>ML Intern</h3>
+                            </div>
+                            <div class="company-name">
+                                <h4>Alembc Pharmaceuticals Ltd</h4>
+                                <a href="#"><img src="../assets/imgs/alembic.png" alt="Alembic" class="company-logo"></a>
+                            </div>
+                            <p class="exp-dates">May 2022 - August 2022</p>
+                            <div class="exp-body">
+                                <ul>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>High-performance API development with Python & FastAPI.</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Scalable, cloud-ready deployment using Docker.</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Robust backend engineering for workflow automation.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                
+
+        <section class="contact-section">
+            <div class="contact-content-grid">
+                <!-- Left Column: Image and Animated Hand -->
+                <div class="contact-left-content">
+                    <img src="../assets/imgs/pfp.jpg" alt="Krish Shetty" class="contact-pfp">
+                    <div class="animated-hand-container">
+                        <ion-icon name="hand-left-outline" class="waving-hand-icon"></ion-icon>
+                    </div>
+                </div>
+
+                <!-- Right Column: Title, Summary, and Form -->
+                <div class="contact-right-content">
+                    <h2 class="section-title">Let's work together</h2>
+                    <p class="contact-summary">Let’s build something impactful together—whether it’s your brand, your website, or your next big idea.</p>
+                    
+                    <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="temp">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="johnsmith@gmail.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">What Can I Help You With?</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Hello, I'd like to enquire about..." required></textarea>
+                        </div>
+                        <div class="submit-container">
+                            <button type="submit" class="about-pg">
+                                <a id="form-submit-text">Submit</a>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="fixed-footer">
+        <div class="footer-content">
+            <hr class="footer-line">
+            <div class="footer-grid">
+                <div class="footer-sitemap">
+                    <h4 class="footer-heading">Sitemap</h4>
+                    <a href="index.html" class="rolling-text">Home</a>
+                    <a href="#" class="rolling-text">About me</a>
+                    <a href="#" class="rolling-text">Projects</a>
+                    <a href="#" class="rolling-text">Contact</a>
+                </div>
+                <div class="footer-socials">
+                    <h4 class="footer-heading">Socials</h4>
+                    <div class="socials-icon-container">
+                        <a href="#"><ion-icon name="logo-github"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Krish Shetty</p>
+            </div>
+        </div>
+    </footer>
+    <script src="about.js"></script>
+</body>
+</html>

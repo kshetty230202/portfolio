@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Krish Shetty Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/grained/grained.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="grain"></div>
+
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-pfp-link"><img src="../assets/imgs/pfp.jpg" alt="Krish Shetty" class="nav-pfp"></a>
+            
+            <a href="index.html" class="rolling-text">Home</a>
+            <a href="../about/about.html" class="rolling-text">About</a>
+            <a href="../projects/projects.html" class="rolling-text">Projects</a>
+            <button id="contact"><a href="#">Contact</a></button>
+        </nav>
+
+        <section class="hero-section">
+            <div class="hero-grid">
+                <h2 class="hero-headline">ML Enthusiast</h2>
+                <h1 class="hero-left-title">Krish</h1>
+                <div class="hero-center">
+                    <img src="../assets/imgs/pfp-1.jpg" alt="Krish Shetty" class="hero-pfp pfp-size">
+                    <div class="animated-hand-container">
+                        <ion-icon name="hand-left-outline" class="waving-hand-icon"></ion-icon>
+                    </div>
+                </div>
+                <h1 class="hero-right-title">Shetty</h1>
+                <p class="hero-tagline">Building Systems<br>Scaling Impact</p>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="about-content-grid">
+                <div class="about-text-content">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="about-summary">
+                        Hi, I'm Krish - I'm an AI Engineer who architects intelligent systems, transforming complex business challenges into a decisive competitive advantage.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-num">3</div>
+                            <div class="stat-label"><a href="#" class="rolling-text">Major Companies</a></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-num">5+</div>
+                            <div class="stat-label"><a href="#" class="rolling-text">Projects</a></div>
+                        </div>
+                        <div class="stat-item">
+                            <img src="../assets/imgs/education.png" alt="University logo" class="bing-logo">
+                            <div class="stat-label"><a href="#" class="rolling-text">Got My Master's from</a></div>
+                        </div>
+                    </div>
+                    <div class="details-container">
+                        <div class="call-me">
+                            <h4 class="call-line">Call Today:</h4>
+                            <p class="call-num">+1 (555) 123-4567</p>
+                        </div>
+                        <div class="email-me">
+                            <h4 class="email-line">Email:</h4>
+                            <p class="email-id">eng@example.com</p>
+                        </div>
+                    </div>
+                    <div class="social-container">
+                        <a href="#"><ion-icon name="logo-github"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                    </div>
+                    <div class="read-more">
+                        <button class="about-pg">
+                            <a href="../about/about.html">My Story</a>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="my-music">
+                    <div class="music-card">
+                        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3PgobxwUYuNXbwe8n6aBar?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="yes" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="services-section">
+            <div class="services-content-grid">
+                <div class="services-left-content">
+                    <h2 class="section-title">What I Can Do For You</h2>
+                    <p class="services-summary">
+                        I build intelligent, end-to-end AI systems, from data pipelines to production-level APIs, leveraging large language models to create impactful and efficient solutions.
+                    </p>
+                </div>
+                <div class="services-right-content">
+                    <div class="services-accordion">
+                        <div class="services-accordion-item">
+                            <button class="services-accordion-header">
+                                <h3>1. INTELLIGENT API & BACKEND ENGINEERING</h3>
+                                <ion-icon name="chevron-down-outline"></ion-icon>
+                            </button>
+                            <div class="services-accordion-body">
+                                <ul>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>High-performance API development with Python & FastAPI.</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Scalable, cloud-ready deployment using Docker.</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Robust backend engineering for workflow automation.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="services-accordion-item">
+                            <button class="services-accordion-header">
+                                <h3>2. ADVANCED LLM & GENERATIVE AI SOLUTIONS</h3>
+                                <ion-icon name="chevron-down-outline"></ion-icon>
+                            </button>
+                            <div class="services-accordion-body">
+                                <ul>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>LLM integration & fine-tuning (Gemini, OpenAI).</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Semantic search & RAG systems with FAISS.</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Advanced prompt engineering & model optimization.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="services-accordion-item">
+                            <button class="services-accordion-header">
+                                <h3>3. CUSTOM MACHINE LEARNING MODELS</h3>
+                                <ion-icon name="chevron-down-outline"></ion-icon>
+                            </button>
+                            <div class="services-accordion-body">
+                                <ul>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Custom model development (PyTorch, TensorFlow).</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>End-to-end ML project lifecycle management.</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Complex pattern recognition & anomaly detection.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="services-accordion-item">
+                            <button class="services-accordion-header">
+                                <h3>4. HIGH-ACCURACY DATA PROCESSING PIPELINES</h3>
+                                <ion-icon name="chevron-down-outline"></ion-icon>
+                            </button>
+                            <div class="services-accordion-body">
+                                <ul>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Custom OCR & NER pipelines for data extraction.</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Data cleaning & classification with Transformers.</span></li>
+                                    <li><ion-icon name="checkmark-circle-outline"></ion-icon><span>Resilient data architecture & validation in MySQL.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section">
+            <div class="projects-container">
+                <div class="projects-header">
+                    <h2 class="section-title">Projects</h2>
+                    <p class="projects-summary">
+                        These selected projects reflect my passion for blending strategy with creativity, solving real problems through thoughtful design and impactful storytelling.
+                    </p>
+                </div>
+
+                <div class="projects-stack">
+                    <div class="project-card" style="background-image: url('p3.png');">
+                        <div class="project-card-content">
+                            <span class="project-category">Custom Machine Learning</span>
+                            <h2>ML Model Development</h2>
+                            <p>The core development environment for creating, training, and fine-tuning custom machine learning models with PyTorch and TensorFlow.</p>
+                        </div>
+                    </div>
+                    <div class="project-card" style="background-image: url('p2.png');">
+                        <div class="project-card-content">
+                            <span class="project-category">Data Processing & Visualization</span>
+                            <h2>Custom Analytics Dashboard</h2>
+                            <p>An end-to-end data pipeline that processes raw data and visualizes key metrics through an interactive and easy-to-understand dashboard.</p>
+                        </div>
+                    </div>
+                    <div class="project-card" style="background-image: url('p1.png');">
+                        <div class="project-card-content">
+                            <span class="project-category">Intelligent API & Backend</span>
+                            <h2>Raven LLM Router</h2>
+                            <p>A production-grade AI infrastructure project for routing requests to the most efficient Large Language Model based on real-time performance metrics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="browse-button-container">
+                <button class="about-pg">
+                    <a href="#">Browse All Projects</a>
+                </button>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="faq-content-grid">
+                <div class="faq-left-content">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="faq-summary">
+                        Here are answers to some of the most common questions I receive. If you don't see your question here, feel free to reach out...I'm happy to help!
+                    </p>
+                </div>
+                <div class="faq-right-content">
+                    <div class="services-accordion">
+                        <div class="services-accordion-item">
+                            <button class="services-accordion-header">
+                                <h3>1. What is your development process for an ML project?</h3>
+                                <ion-icon name="chevron-down-outline"></ion-icon>
+                            </button>
+                            <div class="services-accordion-body">
+                                <p>My process is structured for delivering robust, production-ready solutions. It begins with a deep dive into your goals, followed by data analysis, model prototyping, and rigorous validation. The final stage is deploying the model into a scalable architecture with continuous monitoring to ensure peak performance.</p>
+                            </div>
+                        </div>
+                        <div class="services-accordion-item">
+                            <button class="services-accordion-header">
+                                <h3>2. How do you ensure your models are reliable in a live environment?</h3>
+                                <ion-icon name="chevron-down-outline"></ion-icon>
+                            </button>
+                            <div class="services-accordion-body">
+                                <p>Reliability is non-negotiable. I ensure it through several key practices: creating resilient data pipelines with strict validation, iterative model tuning based on real-world feedback, and implementing comprehensive logging and monitoring to track performance and detect anomalies before they become problems.</p>
+                            </div>
+                        </div>
+                        <div class="services-accordion-item">
+                            <button class="services-accordion-header">
+                                <h3>3. What technologies are in your primary toolkit?</h3>
+                                <ion-icon name="chevron-down-outline"></ion-icon>
+                            </button>
+                            <div class="services-accordion-body">
+                                <p>I specialize in a modern, production-focused tech stack. For backend services, I use Python, FastAPI, and Docker. For machine learning, my tools of choice are PyTorch, TensorFlow, and Scikit-learn. In Generative AI, I leverage LLMs, RAG architectures, and vector databases like FAISS.</p>
+                            </div>
+                        </div>
+                        <div class="services-accordion-item">
+                            <button class="services-accordion-header">
+                                <h3>4. What do you need from me to start a project?</h3>
+                                <ion-icon name="chevron-down-outline"></ion-icon>
+                            </button>
+                            <div class="services-accordion-body">
+                                <p>To get started, I typically need three things: a clear definition of the problem you're trying to solve, access to the relevant data (under NDA, of course), and a high-level understanding of what a successful outcome looks like for your business. From there, we can build a detailed project plan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="marquee full-width-marquee">
+                <div class="marquee-track">
+                    <span>Open to new opportunities • Available for relocation • </span>
+                    <span>Open to new opportunities • Available for relocation • </span>
+                    <span>Open to new opportunities • Available for relocation • </span>
+                    <span>Open to new opportunities • Available for relocation • </span>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section class="contact-section">
+            <div class="contact-content-grid">
+                <!-- Left Column: Image and Animated Hand -->
+                <div class="contact-left-content">
+                    <img src="../assets/imgs/pfp-2.jpg" alt="Krish Shetty" class="contact-pfp">
+                    <div class="animated-hand-container">
+                        <ion-icon name="hand-left-outline" class="waving-hand-icon"></ion-icon>
+                    </div>
+                    <div class="marquee">
+                        <div class="marquee-track">
+                            <span>Pretty • Please • &#128079</span>
+                            <span>Pretty • Please • &#128079</span>
+                            <span>Pretty • Please • &#128079</span>
+                            <span>Pretty • Please • &#128079</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Title, Summary, and Form -->
+                <div class="contact-right-content">
+                    <h2 class="section-title">Let's work together</h2>
+                    <p class="contact-summary">Let’s build something impactful together—whether it’s your brand, your website, or your next big idea.</p>
+                    
+                    <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="temp">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="johnsmith@gmail.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">What Can I Help You With?</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Hello, I'd like to enquire about..." required></textarea>
+                        </div>
+                        <div class="submit-container">
+                            <button type="submit" class="about-pg">
+                                <a id="form-submit-text">Submit</a>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="fixed-footer">
+        <div class="footer-content">
+            <hr class="footer-line">
+            <div class="footer-grid">
+                <div class="footer-sitemap">
+                    <h4 class="footer-heading">Sitemap</h4>
+                    <a href="index.html" class="rolling-text">Home</a>
+                    <a href="#" class="rolling-text">About me</a>
+                    <a href="#" class="rolling-text">Projects</a>
+                    <a href="#" class="rolling-text">Contact</a>
+                </div>
+                <div class="footer-socials">
+                    <h4 class="footer-heading">Socials</h4>
+                    <div class="socials-icon-container">
+                        <a href="#"><ion-icon name="logo-github"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Krish Shetty</p>
+            </div>
+        </div>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>
