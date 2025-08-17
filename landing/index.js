@@ -25,42 +25,44 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinks = navBar.querySelectorAll('a.rolling-text, #contact');
     let availableForWork;
 
-    ScrollTrigger.create({
-        start: "top top",
-        end: "+=99999",
-        onUpdate: (self) => {
-            if (self.direction === 1 && self.scroll() > 50) {
-                navBar.style.padding = "0.3rem 1rem 0.3rem 0.6rem";
-                navLinks.forEach(link => link.style.display = "none");
+    if (window.matchMedia('(min-width: 769px)').matches) {
+        ScrollTrigger.create({
+            start: "top top",
+            end: "+=99999",
+            onUpdate: (self) => {
+                if (self.direction === 1 && self.scroll() > 50) {
+                    navBar.style.padding = "0.3rem 1rem 0.3rem 0.6rem";
+                    navLinks.forEach(link => link.style.display = "none");
 
-                if (!availableForWork) {
-                    availableForWork = document.createElement("span");
-                    availableForWork.textContent = "Available for work";
-                    availableForWork.style.color = "#fff";
-                    availableForWork.style.fontSize = "1rem";
-                    availableForWork.style.display = "flex";
-                    availableForWork.style.alignItems = "center";
-                    availableForWork.style.gap = "0.4rem";
+                    if (!availableForWork) {
+                        availableForWork = document.createElement("span");
+                        availableForWork.textContent = "Available for work";
+                        availableForWork.style.color = "#fff";
+                        availableForWork.style.fontSize = "1rem";
+                        availableForWork.style.display = "flex";
+                        availableForWork.style.alignItems = "center";
+                        availableForWork.style.gap = "0.4rem";
 
-                    const dot = document.createElement("span");
-                    dot.style.width = "8px";
-                    dot.style.height = "8px";
-                    dot.style.borderRadius = "50%";
-                    dot.style.background = "rgb(208, 255, 113)";
-                    availableForWork.appendChild(dot);
-                    navBar.appendChild(availableForWork);
-                }
-            } else if (self.direction === -1) {
-                navBar.style.padding = "0.5rem 0.6rem";
-                navLinks.forEach(link => link.style.display = "");
+                        const dot = document.createElement("span");
+                        dot.style.width = "8px";
+                        dot.style.height = "8px";
+                        dot.style.borderRadius = "50%";
+                        dot.style.background = "rgb(208, 255, 113)";
+                        availableForWork.appendChild(dot);
+                        navBar.appendChild(availableForWork);
+                    }
+                } else if (self.direction === -1) {
+                    navBar.style.padding = "0.5rem 0.6rem";
+                    navLinks.forEach(link => link.style.display = "");
 
-                if (availableForWork) {
-                    navBar.removeChild(availableForWork);
-                    availableForWork = null;
+                    if (availableForWork) {
+                        navBar.removeChild(availableForWork);
+                        availableForWork = null;
+                    }
                 }
             }
-        }
-    });
+        });
+    }
 
     // Services accordion functionality
     const accordionHeaders = document.querySelectorAll(".services-accordion-header");
@@ -287,4 +289,43 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 4000);
         });
     });
+
+    // ===== Mobile nav: open/close glass sheet (fixed) =====
+    const navToggle = document.querySelector('.nav-toggle');
+    const navSheet  = document.getElementById('nav-sheet');
+    const navClose  = document.querySelector('.nav-close');
+
+    function openSheet(){
+        if (!navSheet) return;
+        navSheet.hidden = false;                 // remove display:none from [hidden]
+        document.body.classList.add('nav-locked'); // lock scroll
+        requestAnimationFrame(()=> navSheet.classList.add('open')); // fade/scale in
+    }
+
+    function closeSheet(){
+        if (!navSheet) return;
+        navSheet.classList.remove('open');       // start fade/scale out
+        navSheet.addEventListener('transitionend', ()=>{
+                navSheet.hidden = true;                // put back display:none
+                document.body.classList.remove('nav-locked'); // unlock scroll
+        }, { once: true });
+    }
+
+    navToggle?.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        (navSheet?.hidden ?? true) ? openSheet() : closeSheet();
+    });
+    navClose?.addEventListener('click', (e)=>{ e.stopPropagation(); closeSheet(); });
+
+    // click outside to close
+    document.addEventListener('click', (e)=>{
+        if (!navSheet || navSheet.hidden) return;
+        if (!navSheet.contains(e.target) && !navToggle.contains(e.target)) closeSheet();
+    });
+
+    // Esc to close
+    document.addEventListener('keydown', (e)=>{
+        if (e.key === 'Escape' && navSheet && !navSheet.hidden) closeSheet();
+    });
+
 });

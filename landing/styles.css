@@ -994,3 +994,513 @@ html, body {
 .hero-center .hero-pfp {
     transform: translateY(8px) scale(.97);
 }
+
+/* ===== Mobile navbar (About) ===== */
+.nav-afw, .nav-toggle { display: none; }
+
+@media (max-width: 768px){
+    /* hide desktop items EXCEPT the avatar link */
+    .nav-bar .rolling-text,
+    .nav-bar #contact { display: none !important; }
+
+    /* black capsule bar — 3-column grid: [avatar][center label][toggle] */
+    .nav-bar{
+        position: fixed;
+        top: 1rem; left: 50%; transform: translateX(-50%);
+        display: grid;
+        grid-template-columns: auto 1fr auto;   /* ⬅︎ key change */
+        align-items: center;
+        column-gap: .5rem;                      /* uniform spacing */
+        width: min(92vw, 360px);
+        padding: .32rem .35rem;
+        background: #0b0b0b;
+        border: 1px solid rgba(255,255,255,.06);
+        border-radius: 9999px;
+        box-shadow: 0 8px 24px rgba(0,0,0,.35);
+        z-index: 9999;
+    }
+
+    /* show desktop avatar on mobile (left column) */
+    .nav-pfp-link{ display: block !important; line-height: 0; }
+    .nav-pfp-link .nav-pfp{
+        width: 24px; height: 24px; border-radius: 50%; object-fit: cover;
+        border: 1px solid rgba(255,255,255,.15);
+    }
+
+    /* center label (no white pill) */
+    .nav-afw{
+        display: inline-flex; align-items: center; justify-self: center;
+        gap: .5rem; background: transparent; color: #fff; padding: 0; min-width: 0;
+    }
+    .nav-afw .nav-pfp{ display: none; }       /* hide duplicate pfp inside label */
+    .nav-afw-text{
+        font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .nav-afw-dot{ width: 8px; height: 8px; border-radius: 50%; background: #d0ff71; }
+
+    /* toggle on the right column */
+    .nav-toggle{
+        width: 36px; height: 36px; margin: 0;
+        display: flex; align-items: center; justify-content: center;
+        border-radius: 9999px; border: 1px solid rgba(255,255,255,.10);
+        background: #d0ff71; color:#000; cursor: pointer;
+    }
+    .nav-toggle ion-icon{ font-size: 20px; pointer-events: none; }
+
+    /* glassy sheet */
+    .nav-sheet{
+        position: fixed; top: 76px; left: 50%;
+        transform: translate(-50%, -6px) scale(.98);
+        width: min(92vw, 360px);
+        background: rgba(255,255,255,0.12);
+        backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 22px;
+        padding: 1rem 1.25rem 1.25rem;
+        z-index: 10000;
+        opacity: 0; pointer-events: none;
+        transition: opacity .24s ease, transform .24s ease;
+    }
+    .nav-sheet.open{ opacity: 1; transform: translate(-50%, 0) scale(1); pointer-events: auto; }
+
+    .nav-close{
+        position: absolute; top: -16px; right: -16px;
+        width: 44px; height: 44px; border-radius: 9999px;
+        display: flex; align-items: center; justify-content: center;
+        background: rgb(208, 255, 113); color: #000; border: 3px solid #000;
+        box-shadow: 0 8px 24px rgba(0,0,0,.25); cursor: pointer;
+    }
+    .nav-close ion-icon{ font-size: 24px; }
+
+    .nav-sheet-body{
+        display: flex; flex-direction: column; align-items: center;
+        gap: 1.1rem; padding-top: .25rem;
+    }
+    .nav-sheet-body a{ color: #fff; font-size: 1.05rem; }
+    .nav-sheet-body .nav-sheet-contact {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        width: 100%;
+        height: 40px;
+        padding: 0 18px;                      /* horizontal padding */
+        min-width: 160px;                     /* keeps it substantial */
+        width: auto; 
+        background: rgb(208, 255, 113);
+        color: #000 !important;
+        /* border: 3px solid #000; */
+        border-radius: 9999px;
+        text-decoration: none;
+        box-shadow: 0 8px 24px rgba(0,0,0,.25);
+        /* font-weight: 700; */
+        box-shadow: 0 8px 24px rgba(0,0,0,.25);
+        position: relative;
+        overflow: hidden;
+    }
+    /* kill the animated fill from the .about-pg button style */
+    .nav-sheet-body .nav-sheet-contact::before { content: none !important; }
+
+    /* ensure inner text is black */
+    .nav-sheet-body .nav-sheet-contact span { color: #000 !important; }
+
+    /* small press feedback */
+    .nav-sheet-body .nav-sheet-contact:active { transform: translateY(1px); }
+}
+
+/* lock scroll when sheet open */
+body.nav-locked{
+    overflow: hidden;
+}
+
+/* =========================
+   HERO — responsive layout
+   ========================= */
+
+/* 1) Small helpers: make the hand + image scale off a variable */
+.hero-center { position: relative; }
+.animated-hand-container{
+  --hand-size: clamp(64px, 14vw, 96px);
+  width: var(--hand-size);
+  height: var(--hand-size);
+  left: -20px; bottom: -20px;           /* default position near image corner */
+}
+.waving-hand-icon{ font-size: calc(var(--hand-size) * 0.5); }
+
+/* 2) Tweak sizes for medium screens (tablets / narrow laptop windows) */
+@media (max-width: 1024px){
+  .hero-left-title,
+  .hero-right-title{
+    font-size: clamp(2.8rem, 9vw, 5.8rem);
+  }
+  .hero-center .hero-pfp{
+    width: clamp(240px, 34vw, 320px);
+    height: clamp(300px, 46vw, 410px);
+  }
+}
+
+/* 3) Mobile layout: single column with ordered areas
+      [headline]
+      [left-name]
+      [image]
+      [right-name]
+      [tagline]  */
+@media (max-width: 600px){
+  .hero-grid{
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas:
+      "headline"
+      "left"
+      "center"
+      "right"
+      "tagline";
+    gap: .8rem 0;
+    max-width: 92vw;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .hero-headline{
+    grid-area: headline;
+    justify-self: center;
+    align-self: end;
+    padding-bottom: .1rem;
+    font-size: clamp(.85rem, 3.5vw, 1rem);
+    letter-spacing: .18em;
+  }
+
+  .hero-left-title{
+    grid-area: left;
+    justify-self: center;
+    align-self: center;
+    margin: 0;
+    font-size: clamp(2.6rem, 18vw, 4.8rem);
+  }
+
+  .hero-center{
+    grid-area: center;
+    justify-self: center;
+    align-self: center;
+    padding: 0;                           /* tighter around image */
+  }
+  .hero-center .hero-pfp{
+    width: clamp(220px, 68vw, 300px);
+    height: clamp(280px, 88vw, 380px);
+    border-radius: 1rem;
+  }
+
+  .hero-right-title{
+    grid-area: right;
+    justify-self: center;
+    align-self: center;
+    margin: 0;
+    font-size: clamp(2.6rem, 18vw, 4.8rem);
+  }
+
+  .hero-tagline{
+    grid-area: tagline;
+    justify-self: center;
+    align-self: start;
+    text-align: center;
+    max-width: 28ch;
+    padding-top: .25rem;
+    font-size: clamp(.9rem, 3.2vw, 1.05rem);
+  }
+
+  /* hand bubble hugs the image a bit closer on phones */
+  .animated-hand-container{ left: -14px; bottom: -14px; }
+}
+
+
+
+/* =========================
+   HOME — About section (fixed)
+   ========================= */
+
+/* Desktop / large tablet (keep two columns) */
+.about-content-grid{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.my-music,
+.music-card{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* make the iframe fluid with a sane min/max height */
+.my-music iframe{
+  display: block;
+  width: 100% !important;
+  /* Scales with viewport width but never exceeds Spotify's default 352px */
+  height: clamp(220px, 64vw, 352px) !important;
+  max-height: 70vh !important;         /* never taller than the screen */
+  border: 0 !important;
+  border-radius: 12px !important;
+}
+
+/* ====== Stack on small screens ====== */
+@media (max-width: 900px){
+  .about-section{ padding: 8rem 2rem; }
+
+  /* STACK: one column, text first then music */
+  .about-content-grid{
+    grid-template-columns: 1fr !important;
+    gap: clamp(20px, 5vw, 32px);
+    max-width: 92vw;
+  }
+
+  /* friendlier reading width */
+  .about-text-content p{ max-width: 38ch; }
+
+  /* big numbers scale down so they don’t overflow */
+  .stat-num{ font-size: clamp(2.4rem, 9vw, 3.6rem); }
+
+  /* make the 3 stats wrap nicely */
+  .stats-grid{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    column-gap: 2rem;
+    row-gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  /* the third (logo) row spans full width */
+  .stats-grid .stat-item:nth-child(3){
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: .75rem;
+  }
+  .bing-logo{ max-width: 140px; max-height: 70px; }
+
+  /* contact details stack */
+  .details-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* slightly tighter spacing on socials/button */
+  .social-container{ margin-bottom: 2rem; }
+  .my-music{ margin-top: .25rem; }
+}
+
+@media (max-width: 480px){
+  .about-section{ padding: 6rem 1.25rem; }
+  .about-text-content h2{ font-size: clamp(1.3rem, 6vw, 1.6rem); }
+  .about-text-content p{ font-size: clamp(.95rem, 3.4vw, 1.05rem); }
+}
+
+/* — Stack and scale on tablets/phones — */
+@media (max-width: 900px){
+  .services-section,
+  .faq-section{
+    padding: 8rem 2rem;
+  }
+
+  .services-content-grid,
+  .faq-content-grid{
+    grid-template-columns: 1fr !important;      /* one below the other */
+    gap: clamp(20px, 5vw, 32px);
+    max-width: 92vw;
+    margin-inline: auto;
+  }
+
+  /* copy width for comfy reading */
+  .services-summary,
+  .faq-summary{
+    max-width: 38ch;
+  }
+
+  /* make accordion fill full width with comfy spacing */
+  .services-right-content .services-accordion,
+  .faq-right-content .services-accordion{
+    width: 100%;
+  }
+  .services-accordion-header{
+    padding: 1.25rem 0;                         /* slightly tighter on mobile */
+  }
+  .services-accordion-body{
+    padding-bottom: .75rem;                      /* breathing room when open */
+  }
+  .services-accordion-body ul,
+  .services-accordion-body p{
+    padding-right: 0;
+  }
+}
+
+/* — Fine tune very small phones — */
+@media (max-width: 480px){
+  .section-title{
+    font-size: clamp(1.6rem, 8vw, 2.1rem);
+  }
+  .services-accordion-header h3{
+    font-size: clamp(1rem, 4.8vw, 1.25rem);
+  }
+  .services-accordion-body li,
+  .services-accordion-body p{
+    font-size: clamp(.95rem, 3.7vw, 1.05rem);
+  }
+}
+
+/* ===== FAQ — mobile clean layout ===== */
+@media (max-width: 900px){
+  /* stack is already 1col; just polish */
+  .faq-section{ padding: 8rem 2rem; }
+
+  .faq-left-content .section-title{
+    font-size: clamp(1.6rem, 7vw, 2rem);
+    letter-spacing: .02em;         /* less spread so it wraps nicely */
+    line-height: 1.15;
+    margin-bottom: .5rem;
+  }
+  .faq-summary{
+    max-width: 38ch;
+    margin-bottom: 1.25rem;
+    font-size: clamp(.95rem, 3.6vw, 1.05rem);
+    color: #cfcfcf;
+  }
+
+  .faq-right-content .services-accordion{
+    width: 100%;
+    border-top: 0;                 /* remove extra top rule */
+  }
+
+  /* each item becomes a soft card with big tap target */
+  .faq-section .services-accordion-item{
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+    padding: 0 .75rem;
+    margin-bottom: .75rem;
+  }
+
+  .faq-section .services-accordion-header{
+    padding: .9rem 0;
+    gap: .75rem;
+  }
+  .faq-section .services-accordion-header h3{
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: clamp(1rem, 4.6vw, 1.2rem);
+    letter-spacing: 0;
+    line-height: 1.3;
+  }
+
+  /* green pill chevron like your mobile UI */
+  .faq-section .services-accordion-header ion-icon{
+    flex: 0 0 28px;
+    width: 28px; height: 28px;
+    border-radius: 9999px;
+    background: rgb(208,255,113);
+    color: #000;
+    display: grid; place-items: center;
+    font-size: 18px;
+  }
+
+  /* body: no weird artifacts while collapsed */
+  .faq-section .services-accordion-body{
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;
+    transition: max-height .35s ease, opacity .2s ease, padding .2s ease;
+    backface-visibility: hidden;
+  }
+  .faq-section .services-accordion-header.active + .services-accordion-body{
+    opacity: 1;
+    padding: .25rem 0 1rem;
+  }
+  .faq-section .services-accordion-body p{
+    font-size: clamp(.95rem, 3.6vw, 1.05rem);
+    line-height: 1.6;
+    margin: .25rem 0 0;
+  }
+}
+
+/* === CONTACT — rock-solid mobile sizing & stacking === */
+@media (max-width: 900px){
+
+  /* 1) Section & grid */
+  .contact-section{
+    padding: clamp(6rem, 9vw, 8rem) 1.25rem clamp(12rem, 12vw, 14rem);
+  }
+  .contact-content-grid{
+    grid-template-columns: 1fr !important;
+    gap: clamp(18px, 4vw, 28px);
+    max-width: min(92vw, 620px);
+    margin-inline: auto;
+    align-items: start;
+  }
+  .contact-left-content{ order: 1; overflow: visible; }
+  .contact-right-content{ order: 2; }
+
+  /* 2) Image: fluid, never clipped */
+  .contact-pfp{
+    display: block;
+    width: 100%;
+    max-width: none;                    /* let the container control width */
+    height: auto;
+    aspect-ratio: 4 / 5;                /* consistent proportions */
+    max-height: clamp(260px, 56vh, 520px);
+    object-fit: cover;
+    border-radius: 18px;
+    margin-inline: auto;
+  }
+
+  /* hand badge scales down & tucks into the corner */
+  .contact-left-content{ --hand-gap: clamp(48px, 12vw, 72px); }
+  .contact-left-content .animated-hand-container{
+    left: -10px; bottom: -10px;
+    width: var(--hand-gap); height: var(--hand-gap);
+  }
+
+  /* 3) Headline + paragraph: readable width */
+  .contact-right-content .section-title{
+    font-size: clamp(1.35rem, 7vw, 2rem);
+    letter-spacing: .015em;
+    line-height: 1.15;
+    margin-bottom: .5rem;
+  }
+  .contact-summary{
+    max-width: 38ch;
+    font-size: clamp(.95rem, 3.6vw, 1.05rem);
+    line-height: 1.6;
+    margin-bottom: 1.1rem;
+  }
+
+  /* 4) Form: true 1-column, inputs scale with viewport */
+  .contact-form{
+    display: grid;
+    gap: 12px;
+    width: 100%;
+    max-width: min(92vw, 620px);
+    margin-inline: auto;
+  }
+  .form-row{ grid-template-columns: 1fr !important; gap: 12px; margin: 0; }
+  .form-group input,
+  .form-group textarea{
+    width: 100%;
+    font-size: clamp(.95rem, 3.6vw, 1rem);
+    padding: .85rem 1rem;
+  }
+  .form-group textarea{ min-height: clamp(140px, 28vh, 220px); }
+
+  .submit-container{ justify-content: flex-start; }
+}
+
+/* Ultra-small phones */
+@media (max-width: 380px){
+  .contact-section{ padding: clamp(5.5rem, 8vw, 7rem) 1rem clamp(11rem, 12vw, 13rem); }
+  .contact-left-content{ --hand-gap: clamp(42px, 14vw, 64px); }
+}

@@ -23,10 +23,35 @@
 
         <nav class="nav-bar">
             <a href="../index.html" class="nav-pfp-link"><img src="../assets/imgs/pfp.jpg" alt="Krish Shetty" class="nav-pfp"></a>
-            <a href="../landing/index.html" class="rolling-text">Home</a>
+            <a href="../index.html" class="rolling-text">Home</a>
             <a href="about.html" class="rolling-text">About</a>
             <a href="../projects/projects.html" class="rolling-text">Projects</a>
             <button id="contact"><a href="#">Contact</a></button>
+
+            <!-- MOBILE PILL + TOGGLE (shown only on small screens) -->
+            <div class="nav-afw" aria-hidden="true">
+                <img src="../assets/imgs/pfp.jpg" alt="Krish Shetty" class="nav-pfp" />
+                <span class="nav-afw-text">Available for work</span>
+                <span class="nav-afw-dot" aria-hidden="true"></span>
+            </div>
+
+            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-sheet" aria-label="Open menu">
+                <ion-icon name="reorder-three-outline"></ion-icon>
+            </button>
+
+            <!-- Glassy sheet menu -->
+            <div id="nav-sheet" class="nav-sheet" hidden>
+                <button class="nav-close" aria-label="Close menu">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+
+                <nav class="nav-sheet-body">
+                    <a href="../landing/index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="../projects/projects.html">Projects</a>
+                    <a href="#" class="nav-sheet-contact about-pg"><span>Contact</span></a>
+                </nav>
+            </div>
         </nav>
 
         <section class="hero-section">
