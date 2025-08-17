@@ -33,13 +33,13 @@ document.head.appendChild(styleNoUnderline);
 
 ////////////////////  DATA (edit this to add/remove projects)  ////////////////////
 const projects = [
-    { title: "Field Unit",         link: "projects/field-unit.html",         src: "../assets/imgs/p1.png" },
-    { title: "Astral Convergence", link: "projects/astral-convergence.html", src: "../assets/imgs/p2.png" },
-    { title: "Eclipse Core",       link: "projects/eclipse-core.html",       src: "../assets/imgs/p3.png" },
-    { title: "Luminous",           link: "projects/luminous.html",           src: "../assets/imgs/p4.png", pin: true },
-    { title: "Serenity",           link: "projects/serenity.html",           src: "../assets/imgs/p5.png" },
-    { title: "Nebula Point",       link: "projects/nebula-point.html",       src: "../assets/imgs/p6.png" },
-    { title: "Horizon",            link: "projects/horizon.html",            src: "../assets/imgs/p7.png" },
+    { title: "Portfolio",         link: "projects/field-unit.html",         src: "../assets/imgs/p1.png" },
+    { title: "VPN Detection", link: "projects/astral-convergence.html", src: "../assets/imgs/p2.png" },
+    { title: "ML Visualization system",       link: "projects/eclipse-core.html",       src: "../assets/imgs/p3.png" },
+    { title: "Hate-speech Detection",           link: "projects/luminous.html",           src: "../assets/imgs/p4.png", pin: true },
+    // { title: "Serenity",           link: "projects/serenity.html",           src: "../assets/imgs/p5.png" },
+    // { title: "Nebula Point",       link: "projects/nebula-point.html",       src: "../assets/imgs/p6.png" },
+    // { title: "Horizon",            link: "projects/horizon.html",            src: "../assets/imgs/p7.png" },
 ];
 
 ////////////////////  APP  ////////////////////
